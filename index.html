@@ -1,190 +1,190 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta CREF1/RJ</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background: #f5f5f5;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        header {
-            background: #0066cc;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        .logo-cref {
-            height: 60px;
-            margin-bottom: 10px;
-        }
-        .form-container {
-            padding: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            background: #0066cc;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        .results {
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-        .error {
-            color: #d32f2f;
-            background: #ffebee;
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-        }
-        .success {
-            color: #388e3c;
-            background: #e8f5e9;
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consulta CREF1/RJ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    header {
+      background: #0066cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .logo-cref {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    .form-container {
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .results {
+      padding: 20px;
+      border-top: 1px solid #eee;
+    }
+    .error {
+      color: #d32f2f;
+      background: #ffebee;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 15px;
+    }
+    .success {
+      color: #388e3c;
+      background: #e8f5e9;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="https://media.licdn.com/dms/image/v2/D560BAQHbIXYqp3AlsA/company-logo_200_200/company-logo_200_200/0/1694700286767/cref1_rj_logo?e=2147483647&v=beta&t=YYbhfSzl8_DNEgZrAEPQNAiB0hEF1iYOaeTwvj0ZAYg" 
-                 alt="CREF1 Logo" class="logo-cref">
-            <h1>CONSULTA PÚBLICA</h1>
-        </header>
+  <div class="container">
+    <header>
+      <img src="https://media.licdn.com/dms/image/v2/D560BAQHbIXYqp3AlsA/company-logo_200_200/company-logo_200_200/0/1694700286767/cref1_rj_logo?e=2147483647&v=beta&t=YYbhfSzl8_DNEgZrAEPQNAiB0hEF1iYOaeTwvj0ZAYg"
+        alt="CREF1 Logo" class="logo-cref">
+      <h1>CONSULTA PÚBLICA</h1>
+    </header>
 
-        <div class="form-container">
-            <form id="consultaForm">
-                <div class="form-group">
-                    <label for="tipoConsulta">Tipo de Consulta:</label>
-                    <select id="tipoConsulta" required>
-                        <option value="">Selecione...</option>
-                        <option value="nome">Por Nome</option>
-                        <option value="registro">Por Registro</option>
-                        <option value="cpf">Por CPF</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="valorConsulta">Valor:</label>
-                    <input type="text" id="valorConsulta" required placeholder="Digite aqui...">
-                </div>
-
-                <button type="submit">Consultar</button>
-                <button type="button" onclick="document.getElementById('consultaForm').reset(); document.getElementById('resultado').innerHTML = '';">Limpar</button>
-            </form>
+    <div class="form-container">
+      <form id="consultaForm">
+        <div class="form-group">
+          <label for="tipoConsulta">Tipo de Consulta:</label>
+          <select id="tipoConsulta" required>
+            <option value="">Selecione...</option>
+            <option value="nome">Por Nome</option>
+            <option value="registro">Por Registro</option>
+            <option value="cpf">Por CPF</option>
+          </select>
         </div>
 
-        <div class="results" id="resultado">
-            <!-- Resultados aparecerão aqui -->
+        <div class="form-group">
+          <label for="valorConsulta">Valor:</label>
+          <input type="text" id="valorConsulta" required placeholder="Digite aqui...">
         </div>
+
+        <button type="submit">Consultar</button>
+        <button type="button" onclick="document.getElementById('consultaForm').reset(); document.getElementById('resultado').innerHTML = '';">Limpar</button>
+      </form>
     </div>
 
-    <script>
-        const DADOS_VALIDOS = {
-            nome: "joão batista izaias",
-            registro: "05687-G/RJ",
-            cpf: "04384722761",
-            categoria: "EDUCAÇÃO FÍSICA",
-            situacao: "REGULAR",
-            validade: "08/10/2031"
-        };
+    <div class="results" id="resultado">
+      <!-- Resultados aparecerão aqui -->
+    </div>
+  </div>
 
-        function normalizarTexto(texto) {
-            return texto
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .replace(/\s+/g, " ")
-                .trim()
-                .toLowerCase();
-        }
+  <script>
+    const DADOS_VALIDOS = {
+      nome: "joão batista izaias",
+      registro: "05687-G/RJ",
+      cpf: "04384722761",
+      categoria: "EDUCAÇÃO FÍSICA",
+      situacao: "REGULAR",
+      validade: "08/10/2031"
+    };
 
-        document.getElementById('consultaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    function normalizarTexto(texto) {
+      return texto
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+    }
 
-            const tipo = document.getElementById('tipoConsulta').value;
-            let valor = document.getElementById('valorConsulta').value.trim();
-            const resultadoDiv = document.getElementById('resultado');
+    document.getElementById('consultaForm').addEventListener('submit', function (e) {
+      e.preventDefault();
 
-            if (!tipo || !valor) {
-                resultadoDiv.innerHTML = `
-                    <div class="error">
-                        Por favor, preencha todos os campos.
-                    </div>
-                `;
-                return;
-            }
+      const tipo = document.getElementById('tipoConsulta').value;
+      let valor = document.getElementById('valorConsulta').value.trim();
+      const resultadoDiv = document.getElementById('resultado');
 
-            let valido = false;
+      if (!tipo || !valor) {
+        resultadoDiv.innerHTML = `
+          <div class="error">
+            Por favor, preencha todos os campos.
+          </div>
+        `;
+        return;
+      }
 
-            switch(tipo) {
-                case 'nome':
-                    valido = (normalizarTexto(valor) === normalizarTexto(DADOS_VALIDOS.nome));
-                    break;
-                case 'registro':
-                    valido = DADOS_VALIDOS.registro.toUpperCase().includes(valor.toUpperCase());
-                    break;
-                case 'cpf':
-                    const cpfDigitado = valor.replace(/\D/g, '');
-                    valido = (cpfDigitado === DADOS_VALIDOS.cpf);
-                    break;
-            }
+      let valido = false;
 
-            if (!valido) {
-                resultadoDiv.innerHTML = `
-                    <div class="error">
-                        <strong>REGISTRO NÃO ENCONTRADO</strong><br><br>
-                        Nenhum registro encontrado com os dados fornecidos.
-                    </div>
-                `;
-            } else {
-                resultadoDiv.innerHTML = `
-                    <div class="success">
-                        <strong>REGISTRO ENCONTRADO</strong><br><br>
-                        Nome: ${DADOS_VALIDOS.nome.toUpperCase()}<br>
-                        Registro: ${DADOS_VALIDOS.registro}<br>
-                        Categoria: ${DADOS_VALIDOS.categoria}<br>
-                        Situação: ${DADOS_VALIDOS.situacao}<br>
-                        Validade: ${DADOS_VALIDOS.validade}
-                    </div>
-                `;
-            }
-        });
-    </script>
+      switch (tipo) {
+        case 'nome':
+          valido = (normalizarTexto(valor) === normalizarTexto(DADOS_VALIDOS.nome));
+          break;
+        case 'registro':
+          valido = DADOS_VALIDOS.registro.toUpperCase().includes(valor.toUpperCase());
+          break;
+        case 'cpf':
+          const cpfDigitado = valor.replace(/\D/g, '');
+          valido = (cpfDigitado === DADOS_VALIDOS.cpf);
+          break;
+      }
+
+      if (!valido) {
+        resultadoDiv.innerHTML = `
+          <div class="error">
+            <strong>REGISTRO NÃO ENCONTRADO</strong><br><br>
+            Nenhum registro encontrado com os dados fornecidos.
+          </div>
+        `;
+      } else {
+        resultadoDiv.innerHTML = `
+          <div class="success">
+            <strong>REGISTRO ENCONTRADO</strong><br><br>
+            Nome: ${DADOS_VALIDOS.nome.toUpperCase()}<br>
+            Registro: ${DADOS_VALIDOS.registro}<br>
+            Categoria: ${DADOS_VALIDOS.categoria}<br>
+            Situação: ${DADOS_VALIDOS.situacao}<br>
+            Validade: ${DADOS_VALIDOS.validade}
+          </div>
+        `;
+      }
+    });
+  </script>
 </body>
-    </html>
+</html>
